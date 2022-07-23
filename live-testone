@@ -1,0 +1,41 @@
+public static void main(String[] args) {
+		//最小的水仙花数是3位水仙花；
+		int n=3;
+		System.out.println("三位水仙花数：");
+		NarciSsus(n);
+		
+		System.out.println("四位水仙花数：");
+		n=4;
+		NarciSsus(n);
+		
+		System.out.println("五位水仙花数：");
+		n=5;
+		NarciSsus(n);
+	}
+	//参数n是需要查找的水仙花数的位数；
+	public static void 	NarciSsus(int n) {
+		
+		long i,start,end,temp,num,sum;// start起始数据，end结束数据；
+		int j;
+		//起始数据 100；
+		start=(long)Math.pow(10, n-1);//Math.pow 返回第一个参数的第二个参数次方
+		//终止数据
+		end=(long)Math.pow(10, n)-1;
+		
+		for ( i = start; i <end; i++) {			
+			temp = 0;
+			 num = i;
+			 sum=0;
+			 for(j=0;j<n;j++) {//取余求每个位数上的数
+				 
+				 temp = num%10;	
+				 sum=sum+(long)Math.pow(temp, n);	//计算次幂和
+				 //移位；
+				 num=(num-temp)/10;		
+			 }
+			 if(sum==i) {	//n次幂之和等于它本身，则输出；
+				 System.out.println(i);
+			 }
+			
+		}
+	}
